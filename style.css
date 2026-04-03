@@ -266,3 +266,21 @@ footer { padding: 60px 5% 40px; border-top: 1px solid var(--glass-border); margi
 .footer-social-btn { color: var(--text-muted); transition: 0.3s ease; cursor: pointer; }
 .footer-social-btn:hover { color: var(--accent); transform: translateY(-3px); }
 .footer-social-btn svg { width: 24px; height: 24px; fill: currentColor; }
+
+.deep-page-contact-btn {
+    background-color: #0055ff;
+    color: #ffffff !important;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    display: block;
+    margin: 20px auto 10px auto;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
