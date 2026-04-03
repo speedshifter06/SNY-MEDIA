@@ -3,139 +3,322 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SNY MEDIA | Digital Dominance</title>
+    
+    <title>SNY MEDIA. | Digital Dominance & Performance Marketing</title>
+    <meta name="description" content="SNY MEDIA provides high-performance Web Development, Google Ads, digital marketing, ads, SEO, Social Media Marketing, and Branding in Konaseema, Hyderabad, Bangalore, and across India.">
+    <meta name="keywords" content="SNY Media, Web Development, WordPress, UI/UX Design, Google Ads, Facebook Ads, SEO, Graphic Design, Branding, White Label Marketing, Konaseema, Kakinada, East Godavari, Vishakapatnam, Vijayawada, Guntur, Andhra Pradesh, Hyderabad, Chennai, Bangalore, Kerala">
+    <meta name="author" content="speed shifter 06 | SNY MEDIA">
+    <meta name="theme-color" content="#000000">
+    
+    <link rel="icon" type="image/jpeg" href="https://uploads.onecompiler.io/44hamhdu3/44j6b2b6s/1000073376.jpg">
+    <link rel="apple-touch-icon" href="https://uploads.onecompiler.io/44hamhdu3/44j6b2b6s/1000073376.jpg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "SNY MEDIA",
+      "image": "https://uploads.onecompiler.io/44hamhdu3/44j6b2b6s/1000073376.jpg",
+      "@id": "https://snymedia.vercel.app",
+      "url": "https://snymedia.vercel.app",
+      "description": "Premium IT Solutions, Digital Architecture, Google/Facebook Ads, and SEO agency engineered for performance.",
+      "founder": "Swamy Naidu Yarramsetti",
+      "areaServed": [
+        {"@type": "City", "name": "Konaseema"},
+        {"@type": "City", "name": "Kakinada"},
+        {"@type": "AdministrativeArea", "name": "East Godavari"},
+        {"@type": "AdministrativeArea", "name": "Godavari Districts"},
+        {"@type": "City", "name": "Vishakapatnam"},
+        {"@type": "City", "name": "Vijayawada"},
+        {"@type": "City", "name": "Guntur"},
+        {"@type": "AdministrativeArea", "name": "Andhra Pradesh"},
+        {"@type": "City", "name": "Hyderabad"},
+        {"@type": "City", "name": "Chennai"},
+        {"@type": "City", "name": "Bangalore"},
+        {"@type": "AdministrativeArea", "name": "Kerala"}
+      ],
+      "knowsAbout": ["Web Development", "Google Ads", "digital marketing", "Facebook Ads", "SEO", "Social Media Marketing", "Graphic Design", "White Label Marketing", "UI/UX Design", "Branding"]
+    }
+    </script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="splash"><h1>SNY MEDIA</h1></div>
+    <div class="splash">
+        <img src="https://uploads.onecompiler.io/44hamhdu3/44j6b2b6s/1000073376.jpg" alt="Logo">
+        <h1>SNY MEDIA.</h1>
+    </div>
 
-    <a href="https://wa.me/" target="_blank" class="whatsapp-float" onclick="hapticFeedback('light')">
+    <div class="exit-modal" id="exitModal">
+        <div class="exit-content">
+            <h3 style="font-size: 1.8rem; margin-bottom: 10px;">Leaving so soon?</h3>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">Great things are built with patience. Are you sure you want to close SNY MEDIA?</p>
+            <div class="exit-buttons">
+                <button class="btn-secondary" onclick="cancelExit()">Stay</button>
+                <button class="btn-primary" style="background: #ff3b30; box-shadow: none;" onclick="confirmExit()">Exit</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="exit-modal" id="consentModal">
+        <div class="exit-content">
+            <h3 id="consentTitle" style="color: var(--accent); font-size: 1.8rem; margin-bottom: 10px;">Let's Connect!</h3>
+            <p id="consentMessage" style="color: var(--text-muted); margin-bottom: 20px;">You are heading to our official channel. We can't wait to hear your vision!</p>
+            <div class="exit-buttons">
+                <button class="btn-secondary" onclick="closeConsent()">Maybe Later</button>
+                <button class="btn-primary" id="consentConfirm">Yes, Let's Go!</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="exit-modal" id="successModal">
+        <div class="exit-content">
+            <h3 style="color: #34c759; font-size: 1.8rem; margin-bottom: 10px;">Message Received!</h3>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">Thank you for reaching out. We have successfully received your details and will contact you shortly.</p>
+            <div class="exit-buttons">
+                <button class="btn-primary" style="background: #34c759; box-shadow: 0 8px 24px rgba(52, 199, 89, 0.25); width: 100%;" onclick="closeSuccessModal()">Awesome</button>
+            </div>
+        </div>
+    </div>
+
+    <a class="whatsapp-float" onclick="showConsent('whatsapp', 'https://wa.me/')">
         <svg viewBox="0 0 24 24" fill="white" width="35" height="35"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
     </a>
 
     <nav>
-        <div class="logo" onclick="handleNav('home')">SNY MEDIA.</div>
+        <div class="logo" onclick="handleNav('home')">
+            <img src="https://uploads.onecompiler.io/44hamhdu3/44j6b2b6s/1000073376.jpg" alt="SNY Logo" class="nav-logo-img">
+            <span class="logo-text">SNY MEDIA.</span>
+        </div>
         <div class="nav-links">
-            <button onclick="handleNav('home')">Home</button>
-            <button onclick="handleNav('services')">Services</button>
-            <button onclick="handleNav('pricing')">Plans</button>
-            <button onclick="handleNav('about')">Story</button>
-            <button onclick="handleNav('contact')">Contact</button>
+            <button onclick="handleNav('home')">Home.</button>
+            <button onclick="handleNav('services')">Services.</button>
+            <button onclick="handleNav('portfolio')">The Proof.</button>
+            <button onclick="handleNav('about')">Who We Are.</button>
+            <button onclick="handleNav('contact')">Contact Us.</button>
         </div>
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
             <span></span><span></span><span></span>
         </button>
     </nav>
 
-    <div class="mobile-nav-overlay" id="mobileNav">
+    <div class="menu-backdrop" id="menuBackdrop" onclick="toggleMobileMenu()"></div>
+    <div class="mobile-nav-box" id="mobileNav">
         <button class="close-menu" onclick="toggleMobileMenu()">×</button>
-        <button onclick="handleNav('home'); toggleMobileMenu()">Home</button>
-        <button onclick="handleNav('services'); toggleMobileMenu()">Services</button>
-        <button onclick="handleNav('pricing'); toggleMobileMenu()">Plans</button>
-        <button onclick="handleNav('about'); toggleMobileMenu()">Story</button>
-        <button onclick="handleNav('contact'); toggleMobileMenu()">Contact</button>
+        <button onclick="handleNav('home')">Home.</button>
+        <button onclick="handleNav('services')">Services.</button>
+        <button onclick="handleNav('portfolio')">The Proof.</button>
+        <button onclick="handleNav('about')">Who We Are.</button>
+        <button onclick="handleNav('contact')">Contact Us.</button>
     </div>
 
     <main id="home" class="page active">
         <div class="split-layout" style="margin-top: 5vh;">
-            <div class="hero-text">
-                <h1>Digital Architecture.<br>Flawless Execution.</h1>
-                <p style="font-size: 1.3rem;">We engineer high-performance websites, scale social communities to millions of views, and deploy marketing strategies that dominate.</p>
-                <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 30px;">
-                    <button class="btn-primary" onclick="handleNav('services')">View Our Services</button>
-                    <button class="btn-secondary" onclick="handleNav('contact')">Start a Project</button>
+            <div class="hero-visual floating-css">
+                <div class="hero-logo-container">
+                    <div class="glow-wrapper">
+                        <div class="glow-ring"></div>
+                        <img src="https://uploads.onecompiler.io/44hamhdu3/44j6b2b6s/1000073376.jpg" alt="SNY Syndicate" class="hero-main-logo">
+                    </div>
+                    <h2 class="gradient-3d-text-bottom">DOMINATE.</h2>
+                    <p class="hero-sub-text">Your Digital Presence With Us.</p>
                 </div>
             </div>
-            <div class="hero-visual floating-css">
-                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop" style="border-radius: 32px; width: 100%; object-fit: cover;" alt="Digital Art">
+            
+            <div class="hero-text">
+                <h1>Transforming Ideas into Digital Legacies.</h1>
+                <p style="font-size: 1.2rem; margin-bottom: 15px;"><strong>We don't guess; we calculate.</strong> SNY Media was founded on a simple principle—digital architecture requires both structural integrity and visual brilliance.</p>
+                <p style="font-size: 1.1rem;">From Konaseema to the global stage, we engineer high-performance websites, run targeted Ads, and deploy SEO strategies that force the algorithm to bow to your brand.</p>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 30px;">
+                    <button class="btn-primary" onclick="handleNav('services')">Explore Our Arsenal.</button>
+                    <button class="btn-secondary" onclick="handleNav('portfolio')">View The Proof.</button>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 100px;">
+            <div class="section-header" style="margin-bottom: 40px;">
+                <h2>What We Engineer.</h2>
+                <p>A glimpse into our psychological frameworks.</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="card" style="padding: 30px; cursor: pointer; border-color: var(--accent);" onclick="handleNav('services')">
+                    <h3 style="color: var(--text); margin-bottom: 10px;">Web & UI/UX</h3>
+                    <p style="font-size: 0.95rem; margin:0;">Lightning-fast, conversion-focused digital storefronts (WordPress & Custom).</p>
+                </div>
+                <div class="card" style="padding: 30px; cursor: pointer;" onclick="handleNav('services')">
+                    <h3 style="color: var(--text); margin-bottom: 10px;">Performance Marketing</h3>
+                    <p style="font-size: 0.95rem; margin:0;">Mathematical deployment of capital through Google Ads & Meta Ads.</p>
+                </div>
+                <div class="card" style="padding: 30px; cursor: pointer;" onclick="handleNav('services')">
+                    <h3 style="color: var(--text); margin-bottom: 10px;">Brand Identity</h3>
+                    <p style="font-size: 0.95rem; margin:0;">Graphic design, logos, and visual rendering that interrupt the scroll.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <button class="btn-secondary" onclick="handleNav('services')" style="padding: 12px 30px;">View All Services.</button>
+            </div>
+        </div>
+
+        <div style="margin-top: 100px; padding-top: 40px; border-top: 1px solid var(--glass-border);">
+            <div class="section-header" style="margin-bottom: 40px;">
+                <h2>Our Happy Clients.</h2>
+                <p>The psychology of our results, spoken by those who experienced it.</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="review-card">
+                    <div class="quote-mark">❝</div>
+                    <p class="review-text">We had an amazing traditional product but zero online footprint. SNY Media didn't just build a website; they built a digital bridge to our customers. The UI is flawless, and the leads are genuinely high quality. Pure engineering.</p>
+                    <div class="reviewer-info">
+                        <div class="r-avatar">VV</div>
+                        <div>
+                            <span class="reviewer-name">Vishnu Vijay</span>
+                            <span class="reviewer-role">Director, Traditional Retail</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="quote-mark">❝</div>
+                    <p class="review-text">The growth we saw on our social handles was aggressive and fast. They decoded the algorithm and tapped into the exact emotional triggers our audience needed. They don't just build followers; they build a syndicate.</p>
+                    <div class="reviewer-info">
+                        <div class="r-avatar">VP</div>
+                        <div>
+                            <span class="reviewer-name">Veera Pavan</span>
+                            <span class="reviewer-role">Founder, Urban Streetwear Label</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="quote-mark">❝</div>
+                    <p class="review-text">SNY Media's strategies for our film's PR were phenomenal. They know exactly how to trigger the algorithm and build organic hype. The social syndicate they built around our content is incredible. True masters of attention.</p>
+                    <div class="reviewer-info">
+                        <div class="r-avatar">SP</div>
+                        <div>
+                            <span class="reviewer-name">K.S.S.V.Satya Prasad Naidu</span>
+                            <span class="reviewer-role">Film PR & Social Media Manager</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
 
     <main id="services" class="page">
         <div class="section-header">
-            <h2>The Engine Room.</h2>
-            <p>We build digital ecosystems. Click any card to see how we engineer success.</p>
+            <h2>Our Arsenal.</h2>
+            <p>We don't offer generic templates. We build psychological frameworks engineered to capture and convert attention.</p>
         </div>
-        <div class="grid grid-2">
+        
+        <div class="grid grid-3">
             <div class="card clickable-card col-span-2" onclick="openDeepPage('page-web')">
-                <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
-                <h3>Web Development & UI/UX</h3>
-                <p>Lightning-fast digital storefronts structured for peak conversion.</p>
+                <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+                <h3>Web Dev & UI/UX Design.</h3>
+                <p>Custom development and WordPress integration structured purely for peak conversion.</p>
                 <span class="explore-text">Explore System &rarr;</span>
             </div>
+            
+            <div class="card clickable-card" onclick="openDeepPage('page-ads')">
+                <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
+                <h3>Google & Facebook Ads.</h3>
+                <p>Mathematical deployment of capital for guaranteed ROI.</p>
+                <span class="explore-text">Explore ROI &rarr;</span>
+            </div>
+
+            <div class="card clickable-card" onclick="openDeepPage('page-seo')">
+                <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+                <h3>Search Engine Optimization.</h3>
+                <p>Owning the exact search intent of your clients through deep data.</p>
+                <span class="explore-text">Explore Data &rarr;</span>
+            </div>
+
             <div class="card clickable-card" onclick="openDeepPage('page-social')">
-                <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg></div>
-                <h3>Social Media Management</h3>
-                <p>Mastering algorithms to hit millions of organic views.</p>
+                <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg></div>
+                <h3>Social Media Marketing.</h3>
+                <p>Mastering algorithms to build a loyal tribe, not just followers.</p>
                 <span class="explore-text">Explore Strategy &rarr;</span>
             </div>
-            <div class="card clickable-card" onclick="openDeepPage('page-marketing')">
-                <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
-                <h3>Digital Marketing</h3>
-                <p>Data-driven ROI. Precision-targeted paid ads and SEO.</p>
-                <span class="explore-text">Explore Metrics &rarr;</span>
-            </div>
-            <div class="card clickable-card col-span-2" onclick="openDeepPage('page-design')">
-                <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.5" ry="2.5"></rect><circle cx="12" cy="12" r="4"></circle></svg></div>
-                <h3>Graphic Design & Videography</h3>
-                <p>High-fidelity aesthetics built to interrupt the scroll.</p>
+
+            <div class="card clickable-card" onclick="openDeepPage('page-graphic')">
+                <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="2" width="20" height="20" rx="2.5" ry="2.5"></rect><circle cx="12" cy="12" r="4"></circle></svg></div>
+                <h3>Graphic Design.</h3>
+                <p>High-fidelity graphics and posters built to interrupt the scroll.</p>
                 <span class="explore-text">Explore Aesthetics &rarr;</span>
+            </div>
+
+            <div class="card clickable-card col-span-2" onclick="openDeepPage('page-branding')">
+                <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div>
+                <h3>Brand Identity.</h3>
+                <p>The soul of your business visualised. Logos, typography, and brand voice.</p>
+                <span class="explore-text">Explore Identity &rarr;</span>
+            </div>
+            
+            <div class="card clickable-card" onclick="openDeepPage('page-whitelabel')">
+                <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
+                <h3>White Label Marketing.</h3>
+                <p>We do the heavy lifting in the shadows while your agency takes the credit.</p>
+                <span class="explore-text">Explore B2B &rarr;</span>
             </div>
         </div>
     </main>
 
-    <main id="pricing" class="page">
+    <main id="portfolio" class="page">
         <div class="section-header">
-            <h2>Service Plans.</h2>
-            <p>Transparent pricing frameworks for serious brand growth.</p>
+            <h2>The Proof.</h2>
+            <p>We don't just talk. We calculate, execute, and deliver. Here is the evidence of our engineering.</p>
         </div>
-        <div class="grid grid-3" style="gap: 3rem;">
-            <div class="card clickable-card" onclick="openDeepPage('plan-starter')">
-                <h3>Starter Build</h3>
-                <h1 style="font-size: 2.5rem; margin: 15px 0;">₹12,000<span style="font-size:1rem; font-weight:400;">/proj</span></h1>
-                <ul class="plan-list">
-                    <li>✓ 3-5 Page Responsive Site</li>
-                    <li>✓ Basic SEO Setup</li>
-                    <li>✓ UI/UX Architecture</li>
-                </ul>
-                <span class="explore-text">View Details &rarr;</span>
+        
+        <div class="grid grid-2">
+            <div class="card p-card" onclick="openDeepPage('proof-1')">
+                <div class="p-img motion-bg-1">STREETWEAR</div>
+                <div class="p-content">
+                    <h3 style="margin-bottom: 5px;">Urban Streetwear Launch</h3>
+                    <p style="font-size: 0.95rem; margin: 0; color: var(--text-muted);">E-commerce architecture & Meta Ads scaling.</p>
+                </div>
             </div>
-            <div class="card clickable-card" style="border-color: var(--accent); transform: scale(1.02);" onclick="openDeepPage('plan-growth')">
-                <div class="badge">SYNDICATE RETAINER</div>
-                <h3>Growth Protocol</h3>
-                <h1 style="font-size: 2.5rem; margin: 15px 0;">₹7,000<span style="font-size:1rem; font-weight:400;">/mo</span></h1>
-                <ul class="plan-list">
-                    <li>✓ Social Media Management</li>
-                    <li>✓ Content Design</li>
-                    <li>✓ Paid Ad Strategy</li>
-                </ul>
-                <span class="explore-text">View Details &rarr;</span>
+            <div class="card p-card" onclick="openDeepPage('proof-2')">
+                <div class="p-img motion-bg-2">FILM PR</div>
+                <div class="p-content">
+                    <h3 style="margin-bottom: 5px;">Film PR & Syndicate</h3>
+                    <p style="font-size: 0.95rem; margin: 0; color: var(--text-muted);">Algorithmic hype generation and audience retention.</p>
+                </div>
             </div>
-            <div class="card clickable-card" onclick="openDeepPage('plan-enterprise')">
-                <h3>Enterprise Stack</h3>
-                <h1 style="font-size: 2.5rem; margin: 15px 0;">Custom</h1>
-                <ul class="plan-list">
-                    <li>✓ Custom Web Apps</li>
-                    <li>✓ Advanced E-Commerce</li>
-                    <li>✓ Multi-channel Strategy</li>
-                </ul>
-                <span class="explore-text">View Details &rarr;</span>
+            <div class="card p-card col-span-2" onclick="openDeepPage('proof-3')">
+                <div class="p-img motion-bg-3" style="height: 300px;">BRAND IDENTITY</div>
+                <div class="p-content">
+                    <h3 style="margin-bottom: 5px;">Global Brand Redesign</h3>
+                    <p style="font-size: 0.95rem; margin: 0; color: var(--text-muted);">Complete visual rendering and UI/UX optimization for a tech startup.</p>
+                </div>
             </div>
         </div>
     </main>
 
     <main id="about" class="page">
         <div class="split-layout">
-            <div class="hero-visual floating-css">
-                <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1000&auto=format&fit=crop" style="border-radius: 32px; width:100%;">
+            <div class="hero-text card" style="height: 100%;">
+                <h2>Who We Are.</h2>
+                <p style="font-size: 1.2rem; font-weight: 800; color: var(--accent);">Character is Everything. We execute with precision.</p>
+                <p><strong>Our Motive:</strong> We are not here to build basic websites or gather fake followers. Our motive is to transform local businesses into global syndicates. We exist to give brands a digital soul that connects deeply with their clients' emotions, forging unparalleled loyalty.</p>
+                <p><strong>Work Ethics & Discipline:</strong> Discipline over motivation. Value over vanity metrics. Transparency over jargon. When you partner with SNY Media, you get a dedicated team that operates on strict engineering principles—measure twice, code once. We respect your capital, protect your brand, and execute flawlessly.</p>
             </div>
-            <div class="hero-text">
-                <h2>The Story.</h2>
-                <p style="font-size: 1.2rem; font-weight: 500;">Where mechanical logic meets digital aesthetics.</p>
-                <p>SNY Media was founded on a simple principle: digital architecture requires both structural integrity and visual brilliance. Drawing from a deep background in mechanical engineering, we approach website development and social media scaling with absolute precision.</p>
-                <p>We don't guess; we calculate. What started as a vision in Konaseema has evolved into a powerhouse built to engineer your digital success.</p>
+            
+            <div class="hero-visual floating-css">
+                <div class="logic-core-container">
+                    <div class="logic-ring ring-1"></div>
+                    <div class="logic-ring ring-2"></div>
+                    <div class="logic-ring ring-3"></div>
+                    <div class="logic-core"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grid grid-2" style="margin-top: 40px;">
+            <div class="card" style="height: 100%;">
+                <h3 style="color: var(--accent);">Our Mission.</h3>
+                <p>To engineer digital growth with absolute precision and unmatched creative aesthetics. We focus on delivering high-impact solutions that connect directly to human emotions and drive measurable revenue.</p>
+            </div>
+            <div class="card" style="height: 100%;">
+                <h3 style="color: var(--accent);">Our Vision.</h3>
+                <p>To become the global standard for digital dominance, where mechanical logic meets art. We envision a digital landscape where our clients are not just participating, but leading their respective industries.</p>
             </div>
         </div>
     </main>
@@ -143,42 +326,69 @@
     <main id="contact" class="page">
         <div class="section-header">
             <h2>Connect.</h2>
-            <p>Ready to upgrade your digital footprint? Drop us a line.</p>
+            <p>Ready to build something structurally sound? Reach out to our team.</p>
         </div>
-        <div class="grid grid-2">
-            <div class="card">
-              <form action="https://api.web3forms.com/submit" method="POST" onsubmit="hapticFeedback('success');">
-                <input type="hidden" name="access_key" value="28416599-e563-45d1-a52e-e159491a5f57">
-                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-                <input type="text" name="name" class="form-input" placeholder="Full Name" required>
-                <input type="email" name="email" class="form-input" placeholder="Email Address" required>
-                <textarea name="message" class="form-input" rows="5" placeholder="Tell us about your project..." required></textarea>
-                <input type="hidden" name="redirect" value="https://web3forms.com/success">
-                <button type="submit" class="btn-primary" style="width: 100%;">Send Message</button>
-               </form>
+        
+        <div class="grid grid-2" style="align-items: stretch;">
+            <div class="card contact-form" style="height: 100%;">
+                <form id="contactForm" onsubmit="submitForm(event)">
+                    <input type="hidden" name="access_key" value="28416599-e563-45d1-a52e-e159491a5f57">
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                    <input type="text" name="name" class="form-input" placeholder="First Name *" required>
+                    <input type="email" name="email" class="form-input" placeholder="Email Address *" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required>
+                    <input type="tel" name="phone" id="phoneInput" class="form-input" placeholder="Phone Number (10 Digits) *" pattern="[0-9]{10}" maxlength="10" required oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);">
+                    <textarea name="message" id="visionInput" class="form-input" rows="5" placeholder="Enter your vision (Max 270 words)..." required style="height: 120px;" oninput="limitWords(this, 270)"></textarea>
+                    <input type="hidden" name="redirect" value="https://snymedia.vercel.app">
+                    <button type="submit" class="btn-primary" style="width: 100%;">SEND MESSAGE</button>
+                </form>
             </div>
-            <div class="card" style="display: flex; flex-direction: column; justify-content: center; background: url('https://images.unsplash.com/photo-1557683316-973673baf926?q=80') center/cover; position: relative; overflow: hidden;">
-                <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px);"></div>
-                <div style="position: relative; z-index: 1; color: white;">
-                    <h3 style="color: white;">Direct Lines</h3>
-                    <p style="color: #ccc;">Open directly in your native applications.</p>
-                    <button class="btn-secondary" style="margin-bottom: 15px; width: 100%; justify-content: space-between; background: rgba(255,255,255,0.1); color: white; border: none;" onclick="window.open('https://wa.me/+91', '_blank')">
-                        <span>WhatsApp</span> <span>↗</span>
+            
+            <div class="card" style="display: flex; flex-direction: column; justify-content: center; background: url('https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=1000&auto=format&fit=crop') center/cover; position: relative; overflow: hidden; height: 100%;">
+                <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);"></div>
+                <div style="position: relative; z-index: 1; color: white; padding: 20px;">
+                    <h3 style="color: white; font-size: 1.8rem; margin-bottom: 10px;">Direct Lines.</h3>
+                    <p style="color: rgba(255,255,255,0.8); margin-bottom: 30px;">Prefer to speak directly? We are available on our priority channels.</p>
+                    
+                    <button class="btn-secondary" style="display: flex; align-items: center; justify-content: space-between; padding: 18px 25px; margin-bottom: 15px; width: 100%; background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);" onclick="showConsent('whatsapp', 'https://wa.me/')">
+                        <span style="display: flex; align-items:center; gap:12px;"><svg viewBox="0 0 24 24" width="20" height="20" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg> WhatsApp</span> <span>↗</span>
                     </button>
-                    <button class="btn-secondary" style="width: 100%; justify-content: space-between; background: rgba(255,255,255,0.1); color: white; border: none;" onclick="window.location.href='mailto: speedshifter06@gmail.com'">
-                        <span>Email Us</span> <span>↗</span>
+                    <button class="btn-secondary" style="display: flex; align-items: center; justify-content: space-between; padding: 18px 25px; width: 100%; background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.3);" onclick="showConsent('email', 'mailto:hello@snymedia.com')">
+                        <span style="display: flex; align-items:center; gap:12px;"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="white" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> Email Us</span> <span>↗</span>
                     </button>
+
+                    <h3 style="color: white; font-size: 1.2rem; margin: 30px 0 15px; text-align: center;">Keep in touch.</h3>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+                        <a onclick="showConsent('instagram', 'https://instagram.com')" class="social-btn" style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 50%; color: white; cursor: pointer; transition: 0.3s;"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                        <a onclick="showConsent('linkedin', 'https://linkedin.com')" class="social-btn" style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 50%; color: white; cursor: pointer; transition: 0.3s;"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                        <a onclick="showConsent('twitter', 'https://x.com')" class="social-btn" style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 50%; color: white; cursor: pointer; transition: 0.3s;"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                    </div>
+
                 </div>
             </div>
         </div>
     </main>
 
     <div class="deep-page" id="page-web">
-        <button class="close-deep-page" onclick="closeDeepPage('page-web')">← Back</button>
         <div class="deep-content">
-            <h2>Web Architecture.</h2>
-            <p style="color: var(--accent); font-weight: bold; margin-bottom: 30px;">Engineered for Performance.</p>
-            <div class="monitor-mockup">
+            <h2>Web Dev & UI/UX.</h2>
+            <p style="color: var(--accent); font-weight: bold;">Engineered for Conversion & Speed.</p>
+            
+            <ol class="service-details-list">
+                <li>
+                    <strong>The Blueprint (UI/UX Design)</strong>
+                    Before writing a single line of code, we analyze your target audience. We map out the psychological user journey, ensuring the design naturally guides them towards the "Buy" or "Contact" button without friction.
+                </li>
+                <li>
+                    <strong>Structural Engineering (Front-End & WordPress)</strong>
+                    A beautiful design is useless if it's slow. We build custom applications and advanced WordPress setups with clean code, ensuring your platform loads under 2 seconds.
+                </li>
+                <li>
+                    <strong>The Engine Room (Backend & Security)</strong>
+                    Your data is sacred. We implement bulletproof contact forms, secure hosting, and impenetrable architectures. Pure custom engineering for maximum uptime.
+                </li>
+            </ol>
+            
+            <div class="monitor-mockup" style="margin-top: 40px;">
                 <div class="monitor-screen">
                     <div class="code-panel" id="code-typer"></div>
                     <div class="web-panel">
@@ -190,127 +400,537 @@
                 <div class="monitor-stand"></div>
                 <div class="monitor-base"></div>
             </div>
-            <p style="margin-top: 40px;">A website is a machine. We build with clean, minified code ensuring your platform never crashes under pressure. By eliminating bloat and optimizing render speeds, we reduce cognitive friction for your users—turning browsers into buyers. Source: Industry standard metrics show a 1s delay drops conversions by 7%.</p>
+
+            <button class="close-deep-page-bottom" onclick="closeDeepPage()"><span>✕</span> Back to Services.</button>
+        </div>
+    </div>
+
+    <div class="deep-page" id="page-ads">
+        <div class="deep-content">
+            <h2>Google & Facebook Ads.</h2>
+            <p style="color: var(--accent); font-weight: bold;">Mathematical Capital Deployment.</p>
+            
+            <ol class="service-details-list">
+                <li>
+                    <strong>Market Analysis & Targeting</strong>
+                    We don't waste your budget showing ads to everyone. We define a hyper-specific customer persona and target them using Meta and Google's deepest data points.
+                </li>
+                <li>
+                    <strong>A/B Testing Protocol</strong>
+                    Marketing is mathematics, not magic. We run multiple variations of ad copy and visuals simultaneously. We kill the losers quickly and scale the winners aggressively.
+                </li>
+                <li>
+                    <strong>Pixel Tracking & Retargeting</strong>
+                    If a user visits your site but doesn't buy, they aren't gone. We deploy advanced pixel tracking to "follow" them across the internet with irresistible retargeting ads until they convert.
+                </li>
+            </ol>
+
+            <div class="dashboard-ui" style="margin-top: 40px;">
+                <div class="dash-top">
+                    <div class="dash-stat"><span>CAC</span><h3>$12.50</h3></div>
+                    <div class="dash-stat"><span>ROAS</span><h3 style="color: #34c759;">4.2x</h3></div>
+                    <div class="dash-stat"><span>Leads</span><h3>1,402</h3></div>
+                </div>
+                <div class="dash-main-chart">
+                    <svg viewBox="0 0 400 150" class="growth-graph">
+                        <polyline fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" points="0,140 50,110 100,120 150,70 200,90 250,30 300,40 350,10 400,5" class="graph-line"/>
+                        <circle cx="400" cy="5" r="5" fill="var(--accent)" />
+                    </svg>
+                </div>
+            </div>
+
+            <button class="close-deep-page-bottom" onclick="closeDeepPage()"><span>✕</span> Back to Services.</button>
+        </div>
+    </div>
+
+    <div class="deep-page" id="page-seo">
+        <div class="deep-content">
+            <h2>Search Engine Optimization.</h2>
+            <p style="color: var(--accent); font-weight: bold;">Owning the User Intent.</p>
+            
+            <ol class="service-details-list" style="margin-top: 20px;">
+                <li>
+                    <strong>Technical SEO Check</strong>
+                    We restructure your website's bones. We fix broken links, optimize image load times, and ensure the sitemap is crystal clear for Google's web crawlers to read and rank.
+                </li>
+                <li>
+                    <strong>Keyword & Intent Mapping</strong>
+                    We don't just target high-volume words; we target "buying intent" words. When a customer in your region searches for a service you offer, we ensure your brand is the first thing they see.
+                </li>
+                <li>
+                    <strong>Authority Building</strong>
+                    Through high-quality backlinks, local SEO citations (Google My Business), and schema markup, we signal to search engines that your brand is the absolute authority in your niche.
+                </li>
+            </ol>
+            
+            <div class="seo-mockup" style="margin-top: 40px;">
+                <div class="search-bar">
+                    <span style="font-size: 1.2rem;">🔍</span>
+                    <span style="font-weight: 500;">Best digital agency near me</span>
+                </div>
+                <div class="result-card">
+                    <div class="r-title">SNY MEDIA | Digital Dominance</div>
+                    <div class="r-link">https://snymedia.vercel.app</div>
+                    <div style="font-size: 0.9rem; color: var(--text);">We engineer high-performance websites and scale social communities to millions...</div>
+                </div>
+            </div>
+
+            <button class="close-deep-page-bottom" onclick="closeDeepPage()"><span>✕</span> Back to Services.</button>
         </div>
     </div>
 
     <div class="deep-page" id="page-social">
-        <button class="close-deep-page" onclick="closeDeepPage('page-social')">← Back</button>
         <div class="deep-content">
-            <h2>Social Syndicate.</h2>
-            <p style="color: var(--accent); font-weight: bold; margin-bottom: 30px;">The Psychology of Attention.</p>
-            <div class="s25-mockup">
+            <h2>Social Media Marketing.</h2>
+            <p style="color: var(--accent); font-weight: bold;">The Psychology of Attention.</p>
+            
+            <ol class="service-details-list">
+                <li>
+                    <strong>The 3-Second Hook</strong>
+                    The human attention span is shrinking. We script and design content that aggressively interrupts the scroll pattern in the first 3 seconds. We don't make generic posts; we create visual magnets.
+                </li>
+                <li>
+                    <strong>Narrative Arc (Storytelling)</strong>
+                    Followers buy products, but a *tribe* stays loyal. We engineer a sense of belonging by telling your brand's story through carefully crafted reels, carousels, and captions.
+                </li>
+                <li>
+                    <strong>Algorithmic Dominance</strong>
+                    We don't post and pray. We study peak engagement times, trending audio analytics, and hashtag structures to force the Instagram and X algorithms to push your content to millions.
+                </li>
+            </ol>
+
+            <div class="s25-mockup" style="margin-top: 40px;">
                 <div class="s25-camera"></div>
                 <div class="s25-screen">
                     <div class="social-post"><div class="post-head"><div class="avatar"></div><div class="lines"><div class="l1"></div><div class="l2"></div></div></div><div class="post-img"></div></div>
-                    <div class="social-post"><div class="post-head"><div class="avatar"></div><div class="lines"><div class="l1"></div><div class="l2"></div></div></div><div class="post-img"></div></div>
+                    <div class="social-post"><div class="post-head"><div class="avatar"></div><div class="lines"><div class="l1"></div><div class="l2"></div></div></div><div class="post-img" style="background: #ff2a5f;"></div></div>
                 </div>
             </div>
-            <p style="margin-top: 40px;">We understand the tribal nature of human attention. We engineer belonging using specific narrative arcs. We interrupt the pattern in the first 3 seconds to capture focus, provide immense value, and execute seamless calls to action to scale your audience across Insta, X, and FB.</p>
+
+            <button class="close-deep-page-bottom" onclick="closeDeepPage()"><span>✕</span> Back to Services.</button>
         </div>
     </div>
 
-    <div class="deep-page" id="page-marketing">
-        <button class="close-deep-page" onclick="closeDeepPage('page-marketing')">← Back</button>
+    <div class="deep-page" id="page-graphic">
         <div class="deep-content">
-            <h2>Marketing ROI.</h2>
-            <p style="color: var(--accent); font-weight: bold; margin-bottom: 30px;">Mathematical Capital Deployment.</p>
-            <div class="graph-container">
-                <svg viewBox="0 0 400 200" class="growth-graph">
-                    <polyline fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" points="0,180 50,150 100,160 150,100 200,120 250,50 300,70 350,20 400,10" class="graph-line"/>
-                    <circle cx="400" cy="10" r="6" fill="var(--accent)" />
-                </svg>
+            <h2>Graphic Design.</h2>
+            <p style="color: var(--accent); font-weight: bold;">Aesthetics that Interrupt.</p>
+            
+            <ol class="service-details-list" style="margin-top: 20px;">
+                <li>
+                    <strong>Visual Hierarchy</strong>
+                    We design posts, banners, and digital assets where the most important information hits the user's eye first. No clutter, just pure communication.
+                </li>
+                <li>
+                    <strong>Platform-Specific Sizing</strong>
+                    A design for an Instagram Story is different from a LinkedIn Banner. We export every graphic in the exact pixel ratios required by algorithms to prevent compression and blur.
+                </li>
+                <li>
+                    <strong>High-Fidelity Aesthetics</strong>
+                    We use premium assets, advanced composition techniques, and subtle gradients to make your brand look exponentially more expensive than your competitors.
+                </li>
+            </ol>
+
+            <div class="graphic-motion">
+                <div class="gm-shape gm-1"></div>
+                <div class="gm-shape gm-2"></div>
+                <div class="gm-shape gm-3"></div>
             </div>
-            <p style="margin-top: 40px;">Marketing is mathematics. We deploy capital into paid systems only when the funnel is proven to return more than it consumes. Through relentless A/B testing and pixel tracking, we protect your capital while aggressively capturing market share.</p>
+
+            <button class="close-deep-page-bottom" onclick="closeDeepPage()"><span>✕</span> Back to Services.</button>
         </div>
     </div>
 
-    <div class="deep-page" id="page-design">
-        <button class="close-deep-page" onclick="closeDeepPage('page-design')">← Back</button>
-        <div class="deep-content" style="max-width: 1000px;">
-            <h2>Visual Rendering.</h2>
-            <p style="color: var(--accent); font-weight: bold; margin-bottom: 30px;">Aesthetics that Interrupt.</p>
-            <div class="design-grid">
-                <div class="design-item img-1"></div>
-                <div class="design-item img-2"></div>
-                <div class="design-item img-3"></div>
+    <div class="deep-page" id="page-branding">
+        <div class="deep-content">
+            <h2>Brand Identity.</h2>
+            <p style="color: var(--accent); font-weight: bold;">The Soul Visualised.</p>
+            
+            <ol class="service-details-list" style="margin-top: 20px;">
+                <li>
+                    <strong>Color Biology & Typography</strong>
+                    Colors evoke specific biological responses. We curate palettes and typography that instantly signal trust, premium quality, or energy, aligning perfectly with your demographic.
+                </li>
+                <li>
+                    <strong>Logo & Visual Systems</strong>
+                    A logo is the face of the syndicate. We design sharp, memorable, and scalable logos (just like ours) that look equally powerful on a massive billboard or a tiny smartphone screen.
+                </li>
+                <li>
+                    <strong>Brand Voice & Guidelines</strong>
+                    We create a strict rulebook for your brand. How it sounds, what words to use, and what visual filters to apply, ensuring total consistency across the internet.
+                </li>
+            </ol>
+
+            <div style="display: flex; gap: 15px; margin-top: 40px; justify-content: center; flex-wrap: wrap;">
+                <div style="width: 100px; height: 100px; border-radius: 20px; background: #007AFF; box-shadow: 0 10px 20px rgba(0,122,255,0.3);"></div>
+                <div style="width: 100px; height: 100px; border-radius: 20px; background: #111111; box-shadow: 0 10px 20px rgba(0,0,0,0.3);"></div>
+                <div style="width: 100px; height: 100px; border-radius: 20px; background: #F2F2F7; border: 1px solid #ccc;"></div>
+                <div style="height: 100px; border-radius: 20px; background: var(--card-glass); border: 1px solid var(--glass-border); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 30px;">
+                    <h1 style="margin: 0; line-height: 1;">Aa</h1>
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">San Francisco Pro</span>
+                </div>
             </div>
-            <p style="margin-top: 40px;">Color is biological. We use palettes that reduce cognitive fatigue and build immediate trust. We treat negative space as the ultimate luxury. Clutter creates confusion; our minimalist approach directs the human eye exactly to your brand's core message.</p>
+
+            <button class="close-deep-page-bottom" onclick="closeDeepPage()"><span>✕</span> Back to Services.</button>
         </div>
     </div>
 
-    <div class="deep-page" id="plan-starter">
-        <button class="close-deep-page" onclick="closeDeepPage('plan-starter')">← Back</button>
+    <div class="deep-page" id="page-whitelabel">
         <div class="deep-content">
-            <h2>Starter Build Details</h2>
-            <h1 style="color: var(--accent); margin: 20px 0;">₹35,000 / project</h1>
-            <p><strong>Perfect for:</strong> Local businesses and emerging brands needing a strong foundation.</p>
-            <ul style="line-height: 2; margin-top: 20px;">
-                <li><strong>Custom Design:</strong> Not a template. Built specifically for your brand identity.</li>
-                <li><strong>Responsive Architecture:</strong> Flawless rendering on mobile, tablet, and desktop.</li>
-                <li><strong>On-Page SEO:</strong> Meta tags, schema markup, and speed optimization.</li>
-            </ul>
-            <button class="btn-primary" style="margin-top: 30px;" onclick="closeDeepPage('plan-starter'); handleNav('contact')">Book This Plan</button>
+            <h2>White Label Marketing.</h2>
+            <p style="color: var(--accent); font-weight: bold;">The Silent Engine for Agencies.</p>
+            
+            <ol class="service-details-list" style="margin-top: 20px;">
+                <li>
+                    <strong>Invisible Execution</strong>
+                    Are you an agency with too many clients and not enough hands? We step in. We execute the SEO, Ads, and Web Design completely under your brand name. Your clients never know we exist.
+                </li>
+                <li>
+                    <strong>Scalability for You</strong>
+                    You focus on sales and client relationships; we handle the fulfillment. This allows you to scale your agency infinitely without the headache of hiring and training an in-house team.
+                </li>
+                <li>
+                    <strong>Strict NDAs</strong>
+                    We sign iron-clad Non-Disclosure Agreements. We are the silent partners in your success. You take the credit; we do the heavy lifting in the shadows.
+                </li>
+            </ol>
+
+            <div class="wl-mockup" style="margin-top: 40px;">
+                <div class="wl-card" style="z-index: 2;">Your Agency</div>
+                <div class="wl-link">⚙️</div>
+                <div class="wl-card" style="background: var(--text); color: var(--bg); transform: scale(0.9); z-index: 1;">SNY Engine</div>
+            </div>
+
+            <button class="close-deep-page-bottom" onclick="closeDeepPage()"><span>✕</span> Back to Services.</button>
         </div>
     </div>
-    <div class="deep-page" id="plan-growth">
-        <button class="close-deep-page" onclick="closeDeepPage('plan-growth')">← Back</button>
+
+    <div class="deep-page" id="proof-1">
         <div class="deep-content">
-            <h2>Growth Protocol Details</h2>
-            <h1 style="color: var(--accent); margin: 20px 0;">₹20,000 / month</h1>
-            <p><strong>Perfect for:</strong> Brands ready to dominate social feeds and acquire customers actively.</p>
-            <ul style="line-height: 2; margin-top: 20px;">
-                <li><strong>Full Management:</strong> Instagram, Facebook, and X content calendaring.</li>
-                <li><strong>Creative Assets:</strong> High-end poster design, reels editing, and copywriting.</li>
-                <li><strong>Ad Campaigns:</strong> Meta and Google Ad management (Ad spend is separate).</li>
-            </ul>
-            <button class="btn-primary" style="margin-top: 30px;" onclick="closeDeepPage('plan-growth'); handleNav('contact')">Book This Plan</button>
+            <h2>Urban Streetwear Launch.</h2>
+            <p style="color: var(--accent); font-weight: bold;">The Challenge & Execution.</p>
+            <p><strong>The Challenge:</strong> A new apparel brand needed to cut through the heavy noise of the streetwear industry. They had the product, but zero digital infrastructure.</p>
+            <p><strong>The Execution:</strong> We engineered a high-converting E-Commerce architecture. We then deployed mathematically precise Meta Ads targeting hype-culture demographics, paired with aggressive Retargeting Pixels.</p>
+            <p><strong>The Result:</strong> Sold out the first two collections within 48 hours. Achieved a ROAS of 6.5x within the first month.</p>
+            <button class="close-deep-page-bottom" onclick="closeDeepPage()"><span>✕</span> Back to Portfolio.</button>
         </div>
     </div>
-    <div class="deep-page" id="plan-enterprise">
-        <button class="close-deep-page" onclick="closeDeepPage('plan-enterprise')">← Back</button>
+
+    <div class="deep-page" id="proof-2">
         <div class="deep-content">
-            <h2>Enterprise Stack Details</h2>
-            <h1 style="color: var(--accent); margin: 20px 0;">Custom Pricing</h1>
-            <p><strong>Perfect for:</strong> Scaling startups requiring complex tech infrastructure.</p>
-            <ul style="line-height: 2; margin-top: 20px;">
-                <li><strong>Full-Stack Development:</strong> React, Node.js, Database architecture.</li>
-                <li><strong>Custom Features:</strong> User dashboards, payment gateways, booking systems.</li>
-                <li><strong>Dedicated Support:</strong> Priority maintenance and scalability planning.</li>
-            </ul>
-            <button class="btn-primary" style="margin-top: 30px;" onclick="closeDeepPage('plan-enterprise'); handleNav('contact')">Discuss Scope</button>
+            <h2>Film PR & Syndicate.</h2>
+            <p style="color: var(--accent); font-weight: bold;">The Challenge & Execution.</p>
+            <p><strong>The Challenge:</strong> A regional film needed organic hype and a loyal audience base before its major release date. Traditional marketing was too slow and expensive.</p>
+            <p><strong>The Execution:</strong> We built a "Social Syndicate." We used 3-second hook strategies to launch mysterious, engaging reels. We manipulated the social algorithm to trigger organic sharing and meme-creation.</p>
+            <p><strong>The Result:</strong> Reached millions of organic impressions without heavy ad spend. The film opened to packed theaters, driven purely by digital word-of-mouth.</p>
+            <button class="close-deep-page-bottom" onclick="closeDeepPage()"><span>✕</span> Back to Portfolio.</button>
+        </div>
+    </div>
+
+    <div class="deep-page" id="proof-3">
+        <div class="deep-content">
+            <h2>Global Brand Redesign.</h2>
+            <p style="color: var(--accent); font-weight: bold;">The Challenge & Execution.</p>
+            <p><strong>The Challenge:</strong> A tech startup had incredible software but looked like a scam company because of a poorly designed, template-based website and outdated logo.</p>
+            <p><strong>The Execution:</strong> Complete visual rendering. We designed a strict brand guideline (color biology, typography) and engineered a lightning-fast custom web application that screamed "Premium."</p>
+            <p><strong>The Result:</strong> B2B Lead conversion rate increased by 240%. The company secured its next round of funding, citing the new digital presence as a major trust factor.</p>
+            <button class="close-deep-page-bottom" onclick="closeDeepPage()"><span>✕</span> Back to Portfolio.</button>
         </div>
     </div>
 
     <footer>
-        <div class="footer-grid">
+        <div class="footer-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
             <div class="footer-col">
-                <h4 style="font-weight: 800; font-size: 1.2rem; margin-bottom: 15px;">SNY MEDIA.</h4>
+                <div class="footer-branding">
+                    <img src="https://uploads.onecompiler.io/44hamhdu3/44j6b2b6s/1000073376.jpg" alt="Logo" class="footer-logo-img">
+                    <h4 style="font-weight: 800; font-size: 1.4rem; margin: 0;">SNY MEDIA.</h4>
+                </div>
                 <p style="font-size: 0.95rem; color: var(--text-muted);">Engineered digital dominance. From advanced web development to viral social syndicates.</p>
             </div>
-            <div class="footer-col">
-                <h4 style="margin-bottom: 15px;">Quick Links</h4>
-                <ul style="list-style: none;">
-                    <li><a onclick="handleNav('home')" style="cursor: pointer; color: var(--text-muted);">Home</a></li>
-                    <li><a onclick="handleNav('services')" style="cursor: pointer; color: var(--text-muted);">Services</a></li>
-                    <li><a onclick="handleNav('pricing')" style="cursor: pointer; color: var(--text-muted);">Plans & Pricing</a></li>
-                    <li><a onclick="handleNav('about')" style="cursor: pointer; color: var(--text-muted);">Our Story</a></li>
+            
+            <div class="footer-col" style="text-align: center;">
+                <h4 style="margin-bottom: 15px;">Our Services.</h4>
+                <ul style="list-style: none; font-size: 0.95rem;">
+                    <li><a onclick="openServiceFromFooter('page-web');">Web & UI/UX.</a></li>
+                    <li><a onclick="openServiceFromFooter('page-ads');">Google & FB Ads.</a></li>
+                    <li><a onclick="openServiceFromFooter('page-seo');">SEO Analytics.</a></li>
+                    <li><a onclick="openServiceFromFooter('page-social');">Social Media.</a></li>
+                    <li><a onclick="openServiceFromFooter('page-graphic');">Graphic Design.</a></li>
+                    <li><a onclick="openServiceFromFooter('page-branding');">Branding.</a></li>
                 </ul>
             </div>
-            <div class="footer-col">
-                <h4 style="margin-bottom: 15px;">Connect</h4>
+            
+            <div class="footer-col" style="text-align: center;">
+                <h4 style="margin-bottom: 15px;">Quick Links.</h4>
                 <ul style="list-style: none;">
-                    <li><a href="https://instagram.com" target="_blank" style="color: var(--text-muted); text-decoration: none;">Instagram</a></li>
-                    <li><a href="https://linkedin.com" target="_blank" style="color: var(--text-muted); text-decoration: none;">LinkedIn</a></li>
-                    <li><a href="https://x.com" target="_blank" style="color: var(--text-muted); text-decoration: none;">Twitter / X</a></li>
+                    <li><a onclick="handleNav('home')">Home.</a></li>
+                    <li><a onclick="handleNav('services')">Services.</a></li>
+                    <li><a onclick="handleNav('portfolio')">The Proof.</a></li>
+                    <li><a onclick="handleNav('about')">Who We Are.</a></li>
+                    <li><a onclick="handleNav('contact')">Contact Us.</a></li>
                 </ul>
             </div>
         </div>
-        <div style="text-align: center; color: var(--text-muted); font-size: 0.9rem; margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--glass-border);">
-            &copy; <span id="year"></span> SNY Media. All rights reserved.
+        
+        <div class="footer-connect">
+            <h4 style="margin-bottom: 10px;">Connect.</h4>
+            <div class="footer-social-flex">
+                <a onclick="showConsent('instagram', 'https://instagram.com')" class="footer-social-btn"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                <a onclick="showConsent('linkedin', 'https://linkedin.com')" class="footer-social-btn"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                <a onclick="showConsent('twitter', 'https://x.com')" class="footer-social-btn"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            </div>
+            <div style="color: var(--text-muted); font-size: 0.85rem; margin-top: 15px;">
+                &copy; <span id="year"></span> SNY Media. All rights reserved.
+            </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        function hapticFeedback(type = 'light') {
+            if (!navigator.vibrate) return;
+            try {
+                if (type === 'light') navigator.vibrate(15);
+                else if (type === 'heavy') navigator.vibrate(40);
+                else if (type === 'success') navigator.vibrate([15, 30, 20]);
+            } catch (e) {}
+        }
+
+        function navigate(pageId, pushToHistory = true, scrollToTop = true) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                if(scrollToTop) {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }
+            if (pushToHistory) history.pushState({ type: 'page', id: pageId }, '', `#${pageId}`);
+        }
+
+        function handleNav(pageId) {
+            hapticFeedback('light');
+            const anyDeepPage = document.querySelector('.deep-page.active');
+            if (anyDeepPage) {
+                anyDeepPage.classList.remove('active');
+                document.body.classList.remove('body-lock');
+            }
+            const mobileMenu = document.getElementById('mobileNav');
+            const backdrop = document.getElementById('menuBackdrop');
+            if(mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+                backdrop.classList.remove('active');
+                document.body.classList.remove('body-lock');
+            }
+            navigate(pageId, true, true);
+        }
+
+        function openServiceFromFooter(id) {
+            navigate('services', false, false); 
+            openDeepPage(id);
+        }
+
+        function toggleMobileMenu() {
+            hapticFeedback('light');
+            const mobileOverlay = document.getElementById('mobileNav');
+            const backdrop = document.getElementById('menuBackdrop');
+            
+            if (mobileOverlay.classList.contains('active')) {
+                mobileOverlay.classList.remove('active');
+                backdrop.classList.remove('active');
+                document.body.classList.remove('body-lock');
+                history.back(); 
+            } else {
+                mobileOverlay.classList.add('active');
+                backdrop.classList.add('active');
+                document.body.classList.add('body-lock');
+                history.pushState({ type: 'menu' }, '', '#menu'); 
+            }
+        }
+
+        function openDeepPage(id) {
+            hapticFeedback('light');
+            const page = document.getElementById(id);
+            page.classList.add('active');
+            page.scrollTo({ top: 0 }); 
+            document.body.classList.add('body-lock'); 
+            
+            history.pushState({ type: 'deep-page', id: id }, '', `#${id}`);
+            if(id === 'page-web') startTypingEffect();
+        }
+
+        function closeDeepPage() {
+            hapticFeedback('light');
+            const activePage = document.querySelector('.deep-page.active');
+            if(activePage) {
+                activePage.classList.remove('active');
+                document.body.classList.remove('body-lock');
+                history.back();
+            }
+        }
+
+        function showConsent(type, url) {
+            hapticFeedback('heavy');
+            const modal = document.getElementById('consentModal');
+            const title = document.getElementById('consentTitle');
+            const msg = document.getElementById('consentMessage');
+            const confirmBtn = document.getElementById('consentConfirm');
+
+            if(type === 'whatsapp') {
+                title.innerText = "Let's Start the Conversation";
+                msg.innerText = "You're heading to our official WhatsApp. We can't wait to hear about your project!";
+            } else if(type === 'email') {
+                title.innerText = "Send Us a Message";
+                msg.innerText = "You are about to open your email app to write to us. Let's build something great.";
+            } else {
+                title.innerText = "Visit Our Profiles";
+                msg.innerText = "You are heading to our official social media page. See you there!";
+            }
+
+            modal.classList.add('active');
+            document.body.classList.add('body-lock');
+            
+            confirmBtn.onclick = function() {
+                modal.classList.remove('active');
+                document.body.classList.remove('body-lock');
+                window.open(url, '_blank');
+            }
+        }
+
+        function closeConsent() { 
+            document.getElementById('consentModal').classList.remove('active'); 
+            document.body.classList.remove('body-lock');
+        }
+        
+        function limitWords(field, maxWords) {
+            let words = field.value.split(/\s+/);
+            if (words.length > maxWords) {
+                field.value = words.slice(0, maxWords).join(" ");
+            }
+        }
+
+        function submitForm(e) {
+            e.preventDefault();
+            hapticFeedback('heavy');
+            
+            const form = e.target;
+            const btn = form.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
+            
+            btn.innerText = "SENDING...";
+            btn.disabled = true;
+
+            const formData = new FormData(form);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    hapticFeedback('success');
+                    form.reset(); 
+                    document.getElementById('successModal').classList.add('active');
+                    document.body.classList.add('body-lock');
+                } else {
+                    alert("Something went wrong. Please try again.");
+                }
+            })
+            .catch(error => {
+                alert("Network error. Please try again.");
+            })
+            .finally(() => {
+                btn.innerText = originalText;
+                btn.disabled = false;
+            });
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('successModal').classList.remove('active');
+            document.body.classList.remove('body-lock');
+        }
+
+        window.addEventListener('popstate', (event) => {
+            hapticFeedback('heavy');
+            const state = event.state;
+            
+            const activeDeepPage = document.querySelector('.deep-page.active');
+            if (activeDeepPage) {
+                activeDeepPage.classList.remove('active');
+                document.body.classList.remove('body-lock');
+                return; 
+            }
+
+            const mobileOverlay = document.getElementById('mobileNav');
+            const backdrop = document.getElementById('menuBackdrop');
+            if (mobileOverlay.classList.contains('active')) {
+                mobileOverlay.classList.remove('active');
+                backdrop.classList.remove('active');
+                document.body.classList.remove('body-lock');
+                return;
+            }
+            
+            const consentModal = document.getElementById('consentModal');
+            if (consentModal.classList.contains('active')) {
+                consentModal.classList.remove('active');
+                document.body.classList.remove('body-lock');
+                return;
+            }
+            
+            const successModal = document.getElementById('successModal');
+            if (successModal.classList.contains('active')) {
+                successModal.classList.remove('active');
+                document.body.classList.remove('body-lock');
+                return;
+            }
+
+            if (!state || state.type === 'root') {
+                document.getElementById('exitModal').classList.add('active');
+                document.body.classList.add('body-lock');
+                history.pushState({ type: 'root', id: 'home' }, '', '#home');
+            } else if (state && state.type === 'page') {
+                navigate(state.id, false, false);
+            }
+        });
+
+        function cancelExit() { 
+            document.getElementById('exitModal').classList.remove('active'); 
+            document.body.classList.remove('body-lock');
+        }
+        function confirmExit() { 
+            document.getElementById('exitModal').classList.remove('active'); 
+            document.body.classList.remove('body-lock');
+            history.go(-2); 
+        }
+
+        function startTypingEffect() {
+            const codeElement = document.getElementById('code-typer');
+            if(!codeElement) return;
+            codeElement.innerHTML = ''; 
+            const codeStr = `const SNY = {\n  build: "Lightning Fast",\n  ui: "Flawless",\n  conversion: "Peak"\n};\nfunction deploy() {\n  console.log("Success");\n}\ndeploy();`;
+            let i = 0;
+            if(window.typingInterval) clearInterval(window.typingInterval);
+            window.typingInterval = setInterval(() => {
+                if(i < codeStr.length) {
+                    codeElement.innerHTML += codeStr.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(window.typingInterval);
+                }
+            }, 50); 
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.replace('#', '');
+            const validPages = ['home', 'services', 'portfolio', 'about', 'contact'];
+            const initialPage = validPages.includes(hash) ? hash : 'home';
+            
+            history.replaceState({ type: 'root', id: initialPage }, '', `#${initialPage}`);
+            history.pushState({ type: 'page', id: initialPage }, '', `#${initialPage}`);
+            navigate(initialPage, false, true);
+        });
+    </script>
 </body>
 </html>
