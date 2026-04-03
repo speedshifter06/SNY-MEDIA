@@ -1,86 +1,229 @@
-// JS
-
-// 1. Dynamic Year
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// 2. Hardware Haptic Feedback (మొబైల్స్ లో టచ్ ఫీల్ కోసం)
 function hapticFeedback(type = 'light') {
     if (!navigator.vibrate) return;
     try {
         if (type === 'light') navigator.vibrate(15);
+        else if (type === 'heavy') navigator.vibrate(40);
         else if (type === 'success') navigator.vibrate([15, 30, 20]);
     } catch (e) {}
 }
 
-// 3. Navigation System (స్మూత్ స్క్రోలింగ్ & పేజ్ చేంజ్)
-function navigate(pageId, pushToHistory = true) {
-    // అన్ని పేజీలను హైడ్ చేసి, కావలసిన పేజీని మాత్రమే చూపించడం
+function navigate(pageId, pushToHistory = true, scrollToTop = true) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     const targetPage = document.getElementById(pageId);
     if (targetPage) {
         targetPage.classList.add('active');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if(scrollToTop) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
     }
-    // బ్రౌజర్ హిస్టరీ అప్‌డేట్
-    if (pushToHistory) history.pushState({ page: pageId }, '', `#${pageId}`);
+    if (pushToHistory) history.pushState({ type: 'page', id: pageId }, '', `#${pageId}`);
 }
 
-// బటన్స్ క్లిక్ చేసినప్పుడు ఈ ఫంక్షన్ రన్ అవుతుంది
 function handleNav(pageId) {
     hapticFeedback('light');
-    navigate(pageId);
-    // ఒకవేళ డీప్ పేజీలో ఉంటే, దాన్ని క్లోజ్ చేసి మెయిన్ పేజీకి వెళ్లాలి
-    document.querySelectorAll('.deep-page').forEach(dp => dp.classList.remove('active'));
+    const anyDeepPage = document.querySelector('.deep-page.active');
+    if (anyDeepPage) {
+        anyDeepPage.classList.remove('active');
+        document.body.classList.remove('body-lock');
+    }
+    const mobileMenu = document.getElementById('mobileNav');
+    const backdrop = document.getElementById('menuBackdrop');
+    if(mobileMenu.classList.contains('active')) {
+        mobileMenu.classList.remove('active');
+        backdrop.classList.remove('active');
+        document.body.classList.remove('body-lock');
+    }
+    navigate(pageId, true, true);
 }
 
-// బ్రౌజర్ బ్యాక్ బటన్ నొక్కినప్పుడు
-window.addEventListener('popstate', (event) => {
-    navigate(event.state && event.state.page ? event.state.page : 'home', false);
-});
-
-// 4. Mobile Menu Toggle
-const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-const mobileOverlay = document.getElementById('mobileNav');
+function openServiceFromFooter(id) {
+    navigate('services', false, false); 
+    openDeepPage(id);
+}
 
 function toggleMobileMenu() {
     hapticFeedback('light');
-    mobileOverlay.classList.toggle('active');
+    const mobileOverlay = document.getElementById('mobileNav');
+    const backdrop = document.getElementById('menuBackdrop');
+    
+    if (mobileOverlay.classList.contains('active')) {
+        mobileOverlay.classList.remove('active');
+        backdrop.classList.remove('active');
+        document.body.classList.remove('body-lock');
+        history.back(); 
+    } else {
+        mobileOverlay.classList.add('active');
+        backdrop.classList.add('active');
+        document.body.classList.add('body-lock');
+        history.pushState({ type: 'menu' }, '', '#menu'); 
+    }
 }
 
-// 5. Immersive Deep Pages (సర్వీసెస్ & ప్లాన్స్ కోసం కొత్త పేజీల్లా ఓపెన్ అవ్వడం)
 function openDeepPage(id) {
     hapticFeedback('light');
     const page = document.getElementById(id);
     page.classList.add('active');
-    page.scrollTo({ top: 0 }); // పైకి స్క్రోల్ అవ్వాలి
+    page.scrollTo({ top: 0 }); 
+    document.body.classList.add('body-lock'); 
     
-    // Web Dev పేజీ ఓపెన్ చేస్తే టైపింగ్ ఎఫెక్ట్ స్టార్ట్ అవ్వాలి
+    history.pushState({ type: 'deep-page', id: id }, '', `#${id}`);
     if(id === 'page-web') startTypingEffect();
 }
 
-function closeDeepPage(id) {
+function closeDeepPage() {
     hapticFeedback('light');
-    document.getElementById(id).classList.remove('active');
+    const activePage = document.querySelector('.deep-page.active');
+    if(activePage) {
+        activePage.classList.remove('active');
+        document.body.classList.remove('body-lock');
+        history.back();
+    }
 }
 
-// 6. Web Dev Modal - Typing Effect 
+function showConsent(type, url) {
+    hapticFeedback('heavy');
+    const modal = document.getElementById('consentModal');
+    const title = document.getElementById('consentTitle');
+    const msg = document.getElementById('consentMessage');
+    const confirmBtn = document.getElementById('consentConfirm');
+
+    if(type === 'whatsapp') {
+        title.innerText = "Let's Start the Conversation";
+        msg.innerText = "You're heading to our official WhatsApp. We can't wait to hear about your project!";
+    } else if(type === 'email') {
+        title.innerText = "Send Us a Message";
+        msg.innerText = "You are about to open your email app to write to us. Let's build something great.";
+    } else {
+        title.innerText = "Visit Our Profiles";
+        msg.innerText = "You are heading to our official social media page. See you there!";
+    }
+
+    modal.classList.add('active');
+    document.body.classList.add('body-lock');
+    
+    confirmBtn.onclick = function() {
+        modal.classList.remove('active');
+        document.body.classList.remove('body-lock');
+        window.open(url, '_blank');
+    }
+}
+
+function closeConsent() { 
+    document.getElementById('consentModal').classList.remove('active'); 
+    document.body.classList.remove('body-lock');
+}
+
+function limitWords(field, maxWords) {
+    let words = field.value.split(/\s+/);
+    if (words.length > maxWords) {
+        field.value = words.slice(0, maxWords).join(" ");
+    }
+}
+
+function submitForm(e) {
+    e.preventDefault();
+    hapticFeedback('heavy');
+    
+    const form = e.target;
+    const btn = form.querySelector('button[type="submit"]');
+    const originalText = btn.innerText;
+    
+    btn.innerText = "SENDING...";
+    btn.disabled = true;
+
+    const formData = new FormData(form);
+
+    fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            hapticFeedback('success');
+            form.reset(); 
+            document.getElementById('successModal').classList.add('active');
+            document.body.classList.add('body-lock');
+        } else {
+            alert("Something went wrong. Please try again.");
+        }
+    })
+    .catch(error => {
+        alert("Network error. Please try again.");
+    })
+    .finally(() => {
+        btn.innerText = originalText;
+        btn.disabled = false;
+    });
+}
+
+function closeSuccessModal() {
+    document.getElementById('successModal').classList.remove('active');
+    document.body.classList.remove('body-lock');
+}
+
+window.addEventListener('popstate', (event) => {
+    hapticFeedback('heavy');
+    const state = event.state;
+    
+    const activeDeepPage = document.querySelector('.deep-page.active');
+    if (activeDeepPage) {
+        activeDeepPage.classList.remove('active');
+        document.body.classList.remove('body-lock');
+        return; 
+    }
+
+    const mobileOverlay = document.getElementById('mobileNav');
+    const backdrop = document.getElementById('menuBackdrop');
+    if (mobileOverlay.classList.contains('active')) {
+        mobileOverlay.classList.remove('active');
+        backdrop.classList.remove('active');
+        document.body.classList.remove('body-lock');
+        return;
+    }
+    
+    const consentModal = document.getElementById('consentModal');
+    if (consentModal.classList.contains('active')) {
+        consentModal.classList.remove('active');
+        document.body.classList.remove('body-lock');
+        return;
+    }
+    
+    const successModal = document.getElementById('successModal');
+    if (successModal.classList.contains('active')) {
+        successModal.classList.remove('active');
+        document.body.classList.remove('body-lock');
+        return;
+    }
+
+    if (!state || state.type === 'root') {
+        document.getElementById('exitModal').classList.add('active');
+        document.body.classList.add('body-lock');
+        history.pushState({ type: 'root', id: 'home' }, '', '#home');
+    } else if (state && state.type === 'page') {
+        navigate(state.id, false, false);
+    }
+});
+
+function cancelExit() { 
+    document.getElementById('exitModal').classList.remove('active'); 
+    document.body.classList.remove('body-lock');
+}
+function confirmExit() { 
+    document.getElementById('exitModal').classList.remove('active'); 
+    document.body.classList.remove('body-lock');
+    history.go(-2); 
+}
+
 function startTypingEffect() {
     const codeElement = document.getElementById('code-typer');
-    codeElement.innerHTML = ''; // పాతది క్లియర్ చేయడం
-    const codeStr = `const SNY = {
-  build: "Lightning Fast",
-  ui: "Flawless",
-  conversion: "Peak"
-};
-function deploy() {
-  console.log("Success");
-}
-deploy();`;
-    
+    if(!codeElement) return;
+    codeElement.innerHTML = ''; 
+    const codeStr = `const SNY = {\n  build: "Lightning Fast",\n  ui: "Flawless",\n  conversion: "Peak"\n};\nfunction deploy() {\n  console.log("Success");\n}\ndeploy();`;
     let i = 0;
-    // పాత టైమర్ ఉంటే క్లియర్ చేయాలి
     if(window.typingInterval) clearInterval(window.typingInterval);
-    
     window.typingInterval = setInterval(() => {
         if(i < codeStr.length) {
             codeElement.innerHTML += codeStr.charAt(i);
@@ -88,16 +231,15 @@ deploy();`;
         } else {
             clearInterval(window.typingInterval);
         }
-    }, 50); // 50ms కి ఒక లెటర్ టైప్ అవుతుంది
+    }, 50); 
 }
 
-// 7. Initialize Application
 window.addEventListener('DOMContentLoaded', () => {
-    // లింక్ లో ఉన్న హ్యాష్ (#) బట్టి పేజీ లోడ్ అవ్వడం
     const hash = window.location.hash.replace('#', '');
-    const validPages = ['home', 'services', 'pricing', 'about', 'contact'];
+    const validPages = ['home', 'services', 'portfolio', 'about', 'contact'];
     const initialPage = validPages.includes(hash) ? hash : 'home';
     
-    if (!history.state) history.replaceState({ page: initialPage }, '', `#${initialPage}`);
-    navigate(initialPage, false);
+    history.replaceState({ type: 'root', id: initialPage }, '', `#${initialPage}`);
+    history.pushState({ type: 'page', id: initialPage }, '', `#${initialPage}`);
+    navigate(initialPage, false, true);
 });
