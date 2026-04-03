@@ -267,16 +267,16 @@ footer { padding: 60px 5% 40px; border-top: 1px solid var(--glass-border); margi
 .footer-social-btn:hover { color: var(--accent); transform: translateY(-3px); }
 .footer-social-btn svg { width: 24px; height: 24px; fill: currentColor; }
 
-/* Top-Left Glass Back Button for Legal Pages */
+/* Top-Left Glass Back Button for Legal Pages (Light & Dark Mode Compatible) */
 .top-glass-back {
     position: fixed;
     top: 20px;
     left: 20px;
-    background: rgba(17, 17, 17, 0.7);
+    background: rgba(128, 128, 128, 0.15); /* Neutral Glass */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(0, 85, 255, 0.4);
-    color: #ffffff;
+    color: var(--text); /* Auto-switches between Black & White */
     padding: 8px 18px;
     border-radius: 8px;
     font-size: 0.9rem;
@@ -294,6 +294,7 @@ footer { padding: 60px 5% 40px; border-top: 1px solid var(--glass-border); margi
     box-shadow: 0 0 15px rgba(0, 85, 255, 0.6);
     background: rgba(0, 85, 255, 0.15);
     border-color: #0055ff;
+    color: #0055ff;
 }
 
 
